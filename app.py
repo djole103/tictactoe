@@ -1,3 +1,8 @@
+#TODO: 
+#cant play where there's already a piece
+#only allowed coordinates
+#only proper menu options
+
 import sys
 
 INSTRUCTIONS = "Input position you would like to play in the format \"R C\" where R is the row and C is the column."
@@ -72,11 +77,14 @@ def startGame():
 		match.makeMove()
 		match.checkForW()
 		if match.status == "win":
-			print("% wins!" % match.turn)
+			print("%s wins!" % match.turn)
 			return
 		else:
 			movesMade+=1
-			#toggle player
+			if match.turn == "Player X":
+				match.turn = "Player O"
+			else:
+				match.turn = "Player X"
 			
 	
 def instructions():
@@ -88,7 +96,7 @@ def main():
 				2 : instructions,
 				3 : sys.exit}
 	while(1): 
-			print("xxx TIC TAC TOE! ooo")
+			print("\nxxx TIC TAC TOE! ooo")
 			print("MENU\n")
 			print("1: Start Game!\n2: Instructions\n3: Quit")
 			option = int(input())
