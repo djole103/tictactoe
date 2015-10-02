@@ -17,14 +17,50 @@ class Match:
 	def __str__(self):
 		return "\nMake your move: %s\n%s\n%s\n%s" % (self.turn,repr(self.board[0]),repr(self.board[1]),repr(self.board[2]))
 
+	def checkForW(symbol):
+		if self.board[0][0] == symbol and
+		   self.board[0][1] == symbol and
+           self.board[0][2] == symbol: self.status = "Player %s wins!" % upper(symbol)
+	    if self.board[1][0] == symbol and
+		   self.board[1][1] == symbol and
+           self.board[1][2] == symbol: self.status = "Player %s wins!" % upper(symbol)
+		if self.board[2][0] == symbol and
+		   self.board[2][1] == symbol and
+           self.board[2][2] == symbol: self.status = "Player %s wins!" % upper(symbol)
+		if self.board[0][0] == symbol and
+		   self.board[1][0] == symbol and
+           self.board[2][0] == symbol: self.status = "Player %s wins!" % upper(symbol)
+		if self.board[0][1] == symbol and
+		   self.board[1][1] == symbol and
+           self.board[2][1] == symbol: self.status = "Player %s wins!" % upper(symbol)
+		if self.board[0][2] == symbol and
+		   self.board[1][2] == symbol and
+           self.board[2][2] == symbol: self.status = "Player %s wins!" % upper(symbol)
+
+		if self.board[0][0] == symbol and
+		   self.board[1][1] == symbol and
+           self.board[2][2] == symbol: self.status = "Player %s wins!" % upper(symbol)
+
+		if self.board[0][2] == symbol and
+		   self.board[1][1] == symbol and
+           self.board[2][0] == symbol: self.status = "Player %s wins!" % upper(symbol)
+
 	def makeMove():
-		pass
+		postion = map(int,input().split)
+		row = positions[0]
+		column = positions[1]
+		if self.turn = "Player X":
+			self.board[row][column] = 'X'
+		else:
+			self.board[row][column] = 'O'
+		return
 
 def startGame():
 	match = Match()
 	print(match)
     while(match.status != finished):
 		match.makeMove()
+		match.checkForW()
 	
 
 def menu():
