@@ -1,8 +1,3 @@
-#TODO: 
-#cant play where there's already a piece
-#only allowed coordinates
-#only proper menu options
-
 import sys
 
 INSTRUCTIONS = "Input position you would like to play in the format \"R C\" where R is the row and C is the column."
@@ -57,9 +52,22 @@ class Match:
             self.board[2][0] == symbol): self.status = "win"
 
 	def makeMove(self):
-		positions = input().split()
-		row = int(positions[0])
-		column = int(positions[1])
+		row, column = None, None
+		while(1):
+			print("Position you wish to play: ")
+			positions = input().split()
+			row = int(positions[0])
+			column = int(positions[1])
+			if (row > 2 or
+				row < 0 or
+				column > 2 or
+				column < 0 or
+				self.board[row][column] == 'X' or 
+				self.board[row][column] == 'O'):
+				print("That is not a playable position. Please play somewhere else.")
+				continue
+			else:
+				break
 		if self.turn == "Player X":
 			self.board[row][column] = 'X'
 		else:
@@ -100,6 +108,9 @@ def main():
 			print("MENU\n")
 			print("1: Start Game!\n2: Instructions\n3: Quit")
 			option = int(input())
+			if option not in [1,2,3]:
+				print("That option is not an option!")
+				continue
 			choices[option]()
 	
 if __name__ == "__main__":
