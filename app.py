@@ -8,6 +8,7 @@ class Match:
             		  [ ' ' , ' ' , ' '],
              		  [ ' ' , ' ' , ' ']]
 
+		self.players = {0 : "Player X", 1 : "Player O"}
 		self.turn = "Player X"
 		self.status = "Ongoing"
 
@@ -25,30 +26,30 @@ class Match:
 		#horizontally
 		if (self.board[0][0] == symbol and 
 		    self.board[0][1] == symbol and 
-            self.board[0][2] == symbol): self.status = "finished"
+            self.board[0][2] == symbol): self.status = "win"
 		if (self.board[1][0] == symbol and 
 		    self.board[1][1] == symbol and 
-            self.board[1][2] == symbol): self.status = "finished"
+            self.board[1][2] == symbol): self.status = "win"
 		if (self.board[2][0] == symbol and 
 		    self.board[2][1] == symbol and 
-            self.board[2][2] == symbol): self.status = "finished"
+            self.board[2][2] == symbol): self.status = "win"
 		#vertical
 		if (self.board[0][0] == symbol and 
 		    self.board[1][0] == symbol and 
-            self.board[2][0] == symbol): self.status = "finished"
+            self.board[2][0] == symbol): self.status = "win"
 		if (self.board[0][1] == symbol and 
 		    self.board[1][1] == symbol and 
-            self.board[2][1] == symbol): self.status = "finished"
+            self.board[2][1] == symbol): self.status = "win"
 		if (self.board[0][2] == symbol and 
 		    self.board[1][2] == symbol and 
-            self.board[2][2] == symbol): self.status = "finished"
+            self.board[2][2] == symbol): self.status = "win"
 		#diagonal
 		if (self.board[0][0] == symbol and 
 	        self.board[1][1] == symbol and 
-            self.board[2][2] == symbol): self.status = "finished"
+            self.board[2][2] == symbol): self.status = "win"
 		if (self.board[0][2] == symbol and 
 		    self.board[1][1] == symbol and 
-            self.board[2][0] == symbol): self.status = "finished"
+            self.board[2][0] == symbol): self.status = "win"
 
 	def makeMove(self):
 		positions = input().split()
@@ -62,14 +63,21 @@ class Match:
 
 def startGame():
 	match = Match()
-	while(match.status != "finished"):
+	movesMade = 0
+	while(1):
+		if movesMade == 9:
+			print("It's a tie!")
+			return
 		print(match)
 		match.makeMove()
 		match.checkForW()
-		if match.status == "finished":
+		if match.status == "win":
+			print("% wins!" % match.turn)
 			return
 		else:
-			pass #need to change players turn here
+			movesMade+=1
+			#toggle player
+			
 	
 def instructions():
 	print(INSTRUCTIONS+'\n')
