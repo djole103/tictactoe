@@ -20,30 +20,30 @@ class Match:
 	def checkForW(symbol):
 		if self.board[0][0] == symbol and
 		   self.board[0][1] == symbol and
-           self.board[0][2] == symbol: self.status = "Player %s wins!" % upper(symbol)
+           self.board[0][2] == symbol: self.status = "finished"
 	    if self.board[1][0] == symbol and
 		   self.board[1][1] == symbol and
-           self.board[1][2] == symbol: self.status = "Player %s wins!" % upper(symbol)
+           self.board[1][2] == symbol: self.status = "finished"
 		if self.board[2][0] == symbol and
 		   self.board[2][1] == symbol and
-           self.board[2][2] == symbol: self.status = "Player %s wins!" % upper(symbol)
+           self.board[2][2] == symbol: self.status = "finished"
 		if self.board[0][0] == symbol and
 		   self.board[1][0] == symbol and
-           self.board[2][0] == symbol: self.status = "Player %s wins!" % upper(symbol)
+           self.board[2][0] == symbol: self.status = "finished"
 		if self.board[0][1] == symbol and
 		   self.board[1][1] == symbol and
-           self.board[2][1] == symbol: self.status = "Player %s wins!" % upper(symbol)
+           self.board[2][1] == symbol: self.status = "finished"
 		if self.board[0][2] == symbol and
 		   self.board[1][2] == symbol and
-           self.board[2][2] == symbol: self.status = "Player %s wins!" % upper(symbol)
+           self.board[2][2] == symbol: self.status = "finished"
 
 		if self.board[0][0] == symbol and
 		   self.board[1][1] == symbol and
-           self.board[2][2] == symbol: self.status = "Player %s wins!" % upper(symbol)
+           self.board[2][2] == symbol: self.status = "finished"
 
 		if self.board[0][2] == symbol and
 		   self.board[1][1] == symbol and
-           self.board[2][0] == symbol: self.status = "Player %s wins!" % upper(symbol)
+           self.board[2][0] == symbol: self.status = "finished"
 
 	def makeMove():
 		postion = map(int,input().split)
@@ -63,19 +63,18 @@ def startGame():
 		match.checkForW()
 	
 
-def menu():
-	print("xxx TIC TAC TOE! ooo")
-	print("MENU\n")
-	print("1: Start Game!\n
-		   2: Instructions\n
-		   3: Quit")
-	option = int(input)
+def main():
 	choices = { 1 : startgame(),
 				2 : print(instructions),
-				3 : sys.exit()
-
-def main():
-	menu()
+				3 : sys.exit()}
+	while(1): 
+			print("xxx TIC TAC TOE! ooo")
+			print("MENU\n")
+			print("1: Start Game!\n
+				   2: Instructions\n
+				   3: Quit")
+			option = int(input)
+			choices[option]
 	
 if __name__ == "__main__":
 	main()
